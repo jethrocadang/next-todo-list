@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 import "./globals.css";
+import NavBar from "@/components/layout/NavBar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <main className="h-screen">{children}</main>
       </body>
     </html>
   );
