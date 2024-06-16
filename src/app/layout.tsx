@@ -28,7 +28,10 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <main className="h-screen">{children}</main>
+        <main className="h-screen">
+          <NavBar />
+          {children}
+        </main>
       </body>
     </html>
   );
