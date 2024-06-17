@@ -18,7 +18,7 @@ const SideBar = () => {
 
   return (
     <aside className="h-full rounded-md py-2.5">
-        <Card className="flex h-full flex-col pt-16 shadow-none">
+        <Card className="flex h-full flex-col pt-16">
           <div className="w-full px-10 text-2xl font-semibold">
             <span className="rounded-md bg-sky-500 px-3 font-black text-white">
               Todo

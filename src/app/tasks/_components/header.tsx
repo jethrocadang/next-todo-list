@@ -5,7 +5,7 @@ import { FiSearch } from "react-icons/fi";
 
 const Header = () => {
   return (
-    <Card className="flex w-full flex-row justify-between p-5 tracking-wide shadow-none">
+    <Card className="flex w-full flex-row justify-between p-5 tracking-wide">
       <div>
         <div className="text-2xl font-medium">
           <span className="font-bold">Hello</span>, Jethro
