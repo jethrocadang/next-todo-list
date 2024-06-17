@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 
 import "./globals.css";
 import NavBar from "@/components/layout/NavBar";
+import { ThemeProvider } from "@/components/theme-provider";
+import SideBar from "@/components/layout/SideBar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -25,13 +27,20 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
-        <main className="h-screen">
-          <NavBar />
-          {children}
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="h-screen flex">
+            <SideBar/>
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
