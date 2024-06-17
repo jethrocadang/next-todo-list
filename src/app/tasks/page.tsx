@@ -1,10 +1,9 @@
+import Header from "./_components/header";
 
-export default function TaskPage () {
-    return (
-        <div>
-            <div>
-                All Tasks
-            </div>
-        </div>
-    )
+export default function TaskPage() {
+  return (
+    <div className="w-full p-2.5">
+      <Header /> 
+    </div>
+  );
 }

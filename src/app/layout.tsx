@@ -6,6 +6,7 @@ import "./globals.css";
 import NavBar from "@/components/layout/NavBar";
 import { ThemeProvider } from "@/components/theme-provider";
 import SideBar from "@/components/layout/SideBar";
+import MaxWidthWrapper from "@/components/maxwith-wrapper";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -36,10 +37,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="h-screen flex">
-            <SideBar/>
-            {children}
-          </main>
+          <MaxWidthWrapper>
+            <main className="flex h-screen">
+              <SideBar />
+              {children}
+            </main>
+          </MaxWidthWrapper>
         </ThemeProvider>
       </body>
     </html>
