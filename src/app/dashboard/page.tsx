@@ -1,4 +1,7 @@
 import DashCards from "@/components/dash-cards";
+import { TaskTable } from "./_components/task-table";
+import { columns } from "./_components/columns";
+import { tasks } from "./_components/dummy";
 
 const HomePage = () => {
   return (
@@ -18,6 +21,7 @@ const HomePage = () => {
         </div>
       </div>
       <div>
+        <TaskTable columns={columns} data={tasks}/>
       </div>
     </div>
   );

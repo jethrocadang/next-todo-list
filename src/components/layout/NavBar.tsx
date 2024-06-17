@@ -13,14 +13,24 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="bg-green-300 w-full container flex">
+    <nav className="container mt-2 flex w-full items-center justify-between bg-green-200 px-5 py-2">
       <div>
-        <Link href={"/"}>Home</Link>
+        <Link href={"/"}>TODO-TEAMS</Link>
       </div>
-      <div className="flex"> 
-        <Link href={"/login"}>Login</Link>
-        <Link href={"/register"}>Register</Link>
-        <Link href={"/dashboard"}>Dashboard</Link>
+      <div className="flex gap-5">
+        <Link
+          href={"/login"}
+          className="rounded-md border border-green-500 bg-green-300 px-5 py-2"
+        >
+          Sign In
+        </Link>
+        <Link
+          href={"/register"}
+          className="rounded-md border border-green-500 bg-green-300 px-5 py-2"
+        >
+          Sign Up
+        </Link>
+        {/* <Link href={"/dashboard"}>Dashboard</Link> */}
       </div>
     </nav>
   );
