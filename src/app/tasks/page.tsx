@@ -1,6 +1,7 @@
 import SideBar from "@/components/layout/SideBar";
 import Header from "./_components/header";
 import TagsFilter from "./_components/tags-filter";
+import TaskList from "./_components/task-list";
 
 export default function TaskPage() {
   return (
@@ -8,6 +9,7 @@ export default function TaskPage() {
       <div className="w-full space-y-2.5">
         <Header />
         <TagsFilter/>
+        <TaskList/>
       </div>
     </div>
   );
