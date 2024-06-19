@@ -5,7 +5,7 @@ import {
   MdOutlineArrowCircleRight,
 } from "react-icons/md";
 
-const TaskList = () => {
+const TaskListNav = () => {
   return (
     <Card className="flex items-center justify-between p-6">
       <div className="items-center w-1/5 flex justify-between">
@@ -25,4 +25,4 @@ const TaskList = () => {
   );
 };
 
-export default TaskList;
+export default TaskListNav;

@@ -1,7 +1,7 @@
 import SideBar from "@/components/layout/SideBar";
 import Header from "./_components/header";
 import TagsFilter from "./_components/tags-filter";
-import TaskList from "./_components/task-list";
+import TaskList from "./_components/task-list-nav";
 
 export default function TaskPage() {
   return (
