@@ -4,8 +4,11 @@ import { Card } from "@/components/ui/card";
 import ProgressCard from "@/components/progress-card";
 import { Calendar } from "@/components/ui/calendar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useDateSelector } from "@/hooks/useDateSelector";
 
 const StoreSider = () => {
+  const {selectedDate, setSelectedDate} = useDateSelector();
+
   return (
     <aside className="h-full rounded-md py-2.5">
       <Card className="flex h-full flex-col px-8 pt-16">
@@ -48,7 +51,7 @@ const StoreSider = () => {
           </Card>
         </div>
         <Card className="mt-10">
-          <Calendar className="flex justify-center" />
+          <Calendar className="flex justify-center" selected={selectedDate} mode="single" onSelect={setSelectedDate}/>
         </Card>
       </Card>
     </aside>

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -7,11 +9,13 @@ import {
 import TaskCard from "@/components/task-card";
 import { tasks } from "./dummy";
 import { format } from "date-fns";
+import { useDateSelector } from "@/hooks/useDateSelector";
 
 const TaskList = () => {
-  const today = new Date();
-  const formatDay = format(today, "EEEE");
-  const formatDate = format(today, "dd MMMM yyyy");
+  const {selectedDate, setSelectedDate, nextDay, previousDay} = useDateSelector();
+  const formatDay = format(selectedDate, "EEEE");
+  const formatDate = format(selectedDate, "dd MMMM yyyy");
+
 
   return (
       <Card className="flex flex-col p-6">
@@ -22,10 +26,10 @@ const TaskList = () => {
               <p className="text-sm">{formatDate}</p>
             </div>
             <div className="flex pr-7 text-2xl">
-              <button>
+              <button onClick={previousDay}>
                 <MdOutlineArrowCircleLeft />
               </button>
-              <button>
+              <button onClick={nextDay}>
                 <MdOutlineArrowCircleRight />
               </button>
             </div>
