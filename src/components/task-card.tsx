@@ -4,22 +4,32 @@ import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "./ui/badge";
 import { RiMore2Fill } from "react-icons/ri";
+import { Task } from "@/lib/types";
 
-const TaskCard = () => {
+const TaskCard = ({
+  id,
+  title,
+  description,
+  tags = [],
+  status,
+  priority,
+  date,
+}: Task) => {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3" key={id}>
       <Checkbox />
       <Card className="flex w-full items-center rounded-lg p-5">
         <div className="w-full space-y-3">
           <div className="space-x-2">
-            <Badge variant={"outline"}>High</Badge>
-            <Badge>Personal</Badge>
-            <Badge>Project</Badge>
+            <Badge variant={"outline"}>{priority}</Badge>
+            {tags.map((tag, index) => (
+              <Badge key={index}>{tag}</Badge>
+            ))}
           </div>
           <div className="">
-            <p className="font-bold">This is my Task title.</p>
+            <p className="font-bold">{title}</p>
             <p className="font-normal">
-              I have a very short description that has limits...
+              {description}
             </p>
           </div>
         </div>
