@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+
 import { RiDashboardFill } from "react-icons/ri";
 import { MdTask, MdOutlineLogout } from "react-icons/md";
-import { FaUsers } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
+
 import { usePathname } from "next/navigation";
 import { Card } from "../ui/card";
 
@@ -18,7 +20,7 @@ const SideBar = () => {
 
   return (
     <aside className="h-full rounded-md py-2.5">
-        <Card className="flex h-full flex-col pt-16">
+        <Card className="flex h-full flex-col pt-10">
           <div className="w-full px-10 text-2xl font-semibold">
             <span className="rounded-md bg-sky-500 px-3 font-black text-white">
               Todo
@@ -42,11 +44,11 @@ const SideBar = () => {
                 Task
               </Link>
               <Link
-                href={"/team"}
-                className={`flex items-center gap-2 rounded-lg p-2 font-medium ${pathname === "/team" ? "bg-sky-500 text-white" : "hover:text-sky-500"}`}
+                href={"/store"}
+                className={`flex items-center gap-2 rounded-lg p-2 font-medium ${pathname === "/store" ? "bg-sky-500 text-white" : "hover:text-sky-500"}`}
               >
-                <FaUsers size={20} />
-                Team
+                <FaCartShopping size={20} />
+                Store
               </Link>
             </div>
             <div>

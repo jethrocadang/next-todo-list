@@ -1,10 +1,11 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
-import Header from "./_components/header";
-import TagsFilter from "./_components/tags-filter";
+import TagsFilter from "../tasks/_components/tags-filter";
 import TaskList from "./_components/task-list";
-import TaskSider from "./_components/sider";
+import Header from "./_components/header";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import StoreSider from "./_components/sider";
 
-export default function TaskPage() {
+
+export default function StorePage() {
   return (
     <div className="flex w-full">
       <ScrollArea className="flex w-full rounded-lg p-2.5">
@@ -14,7 +15,8 @@ export default function TaskPage() {
           <TaskList />
         </div>
       </ScrollArea>
-      <TaskSider/>
+      <StoreSider/>
+
     </div>
   );
 }
