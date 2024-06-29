@@ -7,12 +7,15 @@ import {
   MdOutlineArrowCircleRight,
 } from "react-icons/md";
 import TaskCard from "@/components/task-card";
-import { tasks } from "./dummy";
-import { format } from "date-fns";
+import { format, isSameDay } from "date-fns";
 import { useDateSelector } from "@/hooks/useDateSelector";
+import tasks from "./dummy";
 
 const TaskList = () => {
-  const {selectedDate, setSelectedDate, nextDay, previousDay} = useDateSelector();
+  const {selectedDate, nextDay, previousDay} = useDateSelector();
+
+  const filteredTasks = tasks.filter((task) => isSameDay(new Date(task.date), selectedDate));
+
   const formatDay = format(selectedDate, "EEEE");
   const formatDate = format(selectedDate, "dd MMMM yyyy");
 
@@ -39,7 +42,7 @@ const TaskList = () => {
           </Button>
         </div>
         <div className="space-y-2.5 px-5 py-10">
-          {tasks.map((task) => (
+          {filteredTasks.map((task) => (
             <TaskCard key={task.id} {...task} />
           ))}
         </div>
