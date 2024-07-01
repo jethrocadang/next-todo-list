@@ -1,6 +1,6 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Header from "./_components/header";
-import TagsFilter from "./_components/tags-filter";
+import TagsFilter from "../../components/tag-filter";
 import TaskList from "./_components/task-list";
 import TaskSider from "./_components/sider";
 
@@ -14,7 +14,7 @@ export default function TaskPage() {
           <TaskList />
         </div>
       </ScrollArea>
-      <TaskSider/>
+      <TaskSider />
     </div>
   );
 }

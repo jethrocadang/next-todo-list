@@ -1,12 +1,15 @@
-import DashCards from "@/components/dash-cards";
-import { TaskTable } from "./_components/task-table";
-import { columns } from "./_components/columns";
-import { tasks } from "./_components/dummy";
+
+import DataCard from "./_components/data-card";
 
 const HomePage = () => {
   return (
-    <div className=" h-full w-full">
-      Dashboard  
+    <div className=" h-full w-full p-2.5">
+        <div className="flex w-full bg-green-200">
+          <DataCard/>
+          <DataCard/>
+          <DataCard/>
+          <DataCard/>
+        </div>
     </div>
   );
 };

@@ -1,3 +1,6 @@
+
+
+import TagForm from "@/components/tag-form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -9,9 +12,7 @@ const TagsFilter = () => {
         <Badge>Design</Badge>
         <Badge>Code</Badge>
       </div>
-      <Button>
-        <span className="text-xl">+ &nbsp;</span> New Tag
-      </Button>
+     <TagForm/>
     </Card>
   );
 };

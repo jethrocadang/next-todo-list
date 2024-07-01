@@ -5,6 +5,7 @@ import {
   MdOutlineArrowCircleRight,
 } from "react-icons/md";
 import TaskCard from "../../../components/task-card";
+import TaskForm from "@/components/task-form";
 
 const TaskList = () => {
   return (
@@ -21,15 +22,10 @@ const TaskList = () => {
               <MdOutlineArrowCircleRight />
             </div>
           </div>
-          <Button>
-            <span className="text-xl">+ &nbsp;</span> Add Task
-          </Button>
+          <TaskForm/>
         </div>
         <div className="px-5 py-10 space-y-2.5">
-          <TaskCard />
-          <TaskCard />
-          <TaskCard />
-          <TaskCard />
+        
         </div>
       </Card>
       <Card className="p-6">
@@ -37,11 +33,6 @@ const TaskList = () => {
           Completed Tasks
         </div>
         <div className="px-5 py-10 space-y-2.5">
-          <TaskCard />
-          <TaskCard />
-          <TaskCard />
-          <TaskCard />
-          <TaskCard />
         </div>
       </Card>
     </>

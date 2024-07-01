@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
   MdOutlineArrowCircleLeft,
@@ -10,6 +9,8 @@ import TaskCard from "@/components/task-card";
 import { format, isSameDay } from "date-fns";
 import { useDateSelector } from "@/hooks/useDateSelector";
 import tasks from "./dummy";
+import TaskForm from "@/components/task-form";
+import TagForm from "@/components/tag-form";
 
 const TaskList = () => {
   const {selectedDate, nextDay, previousDay} = useDateSelector();
@@ -37,9 +38,8 @@ const TaskList = () => {
               </button>
             </div>
           </div>
-          <Button>
-            <span className="text-xl">+ &nbsp;</span> Add Task
-          </Button>
+          {/**Add Task Button */}
+          <TaskForm/>
         </div>
         <div className="space-y-2.5 px-5 py-10">
           {filteredTasks.map((task) => (

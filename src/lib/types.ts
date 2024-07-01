@@ -7,3 +7,8 @@ export type Task = {
     priority: "critical" | "high" | "medium" | "low";
     date: string;
   };
+
+  export type Tag = {
+    id: string
+    title: string
+  }

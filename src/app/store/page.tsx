@@ -1,9 +1,8 @@
-import TagsFilter from "../tasks/_components/tags-filter";
+import TagsFilter from "../../components/tag-filter";
 import TaskList from "./_components/task-list";
 import Header from "./_components/header";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import StoreSider from "./_components/sider";
-
 
 export default function StorePage() {
   return (
@@ -15,8 +14,7 @@ export default function StorePage() {
           <TaskList />
         </div>
       </ScrollArea>
-      <StoreSider/>
-
+      <StoreSider />
     </div>
   );
 }
