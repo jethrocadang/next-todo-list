@@ -11,12 +11,17 @@ import {
 } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { cn } from "@/lib/utils";
 
-const TagForm = () => {
+interface TagFormProps {
+  className?: string;
+  variant? : "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined
+}
+const TagForm = ({ className, variant }: TagFormProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>
+        <Button className={cn("", className)} variant={variant}>
           <span className="text-xl">+ &nbsp;</span> New Tag
         </Button>
       </DialogTrigger>
@@ -25,11 +30,11 @@ const TagForm = () => {
           <DialogTitle>Create New Tag</DialogTitle>
           <DialogDescription>Add a new tag for your Team</DialogDescription>
         </DialogHeader>
-          <div>
-            <Label>Title</Label>
-            <Input />
-          </div>
-          <Button className="w-full">Create Tag</Button>
+        <div>
+          <Label>Title</Label>
+          <Input />
+        </div>
+        <Button className="w-full">Create Tag</Button>
       </DialogContent>
     </Dialog>
   );
