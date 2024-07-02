@@ -24,7 +24,7 @@ const Chart = () => {
   ];
 
   return (
-    <Card className="w-full max-w-4xl mt-2.5">
+    <Card className="w-full max-w-4xl">
       <CardHeader>Activity Report</CardHeader>
       <CardContent>
         <ResponsiveContainer width={"100%"} height={500}>
