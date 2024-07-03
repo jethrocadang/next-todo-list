@@ -15,7 +15,7 @@ export const columns: ColumnDef<Task>[] = [
     accessorKey: "tag",
     header: "",
     cell: ({ row }) => (
-      <div>
+      <div className="hidden">
         {row.original.tags.map((tag: string, index: number) => (
           <Badge key={index} variant={"outline"} className="mr-1">
             {tag}

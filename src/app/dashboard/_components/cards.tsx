@@ -5,7 +5,7 @@ import DataCard from "./data-card";
 
 const Cards = () => {
   return (
-    <div className="flex w-full gap-3">
+    <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-4">
       <DataCard title="Members" description="Total" value="05" icon={Users} />
       <DataCard title="Tasks" description="Total" value="05" icon={Users} />
       <DataCard title="Completed" description="Total" value="05" icon={Users} />

@@ -12,19 +12,19 @@ import tasks from "../store/_components/dummy";
 const HomePage = () => {
   return (
     <div className="flex w-full p-2.5">
-      <ScrollArea className="rounded-lg">
-        <div className="space-y-2.5">
+      <ScrollArea className="w-full rounded-lg">
+        <div className="w-full space-y-2.5">
           <Cards />
-          <div className="flex gap-2.5">
+          <div className="flex flex-col gap-2.5 lg:flex-row">
             <Chart />
             <div className="grid grow gap-2.5">
               <TeamPerformance />
               <TagList />
             </div>
           </div>
-          <div className="flex gap-2.5">
-            <DonutChart/>
-            <TaskTable columns={columns} data={tasks}/>
+          <div className="flex flex-col gap-2.5 lg:flex-row">
+            <DonutChart />
+            <TaskTable columns={columns} data={tasks} />
           </div>
         </div>
       </ScrollArea>

@@ -1,6 +1,12 @@
 "use client";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   BarChart,
   ResponsiveContainer,
@@ -25,16 +31,32 @@ const Chart = () => {
 
   return (
     <Card className="w-full max-w-4xl">
-      <CardHeader>Activity Report</CardHeader>
-      <CardContent>
-        <ResponsiveContainer width={"100%"} height={500}>
-          <BarChart data={activity}>
+      <CardHeader>
+        <CardTitle>Activity Report</CardTitle>
+        <CardDescription>Weekly Report for Completed Tasks</CardDescription>
+      </CardHeader>
+      <CardContent className="h-[300px] md:h-[500px] w-full lg:min-w-[500px]">
+        <ResponsiveContainer width={"100%"} height={"100%"}>
+          <BarChart
+            data={activity}
+            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+          >
             <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
+            <YAxis width={25} />
+            <Tooltip contentStyle={{borderRadius: '10px'}}/>
             <Legend />
-            <Bar dataKey="completed" fill="#82ca9d" name="Completed Tasks" />
-            <Bar dataKey="total" fill="#8884d8" name="Total Tasks" />
+            <Bar
+              dataKey="completed"
+              fill="#82ca9d"
+              name="Completed Tasks"
+              radius={[3, 3, 0, 0]}
+            />
+            <Bar
+              dataKey="total"
+              fill="#8884d8"
+              name="Total Tasks"
+              radius={[3, 3, 0, 0]}
+            />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>
