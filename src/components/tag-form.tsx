@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "./ui/button";
+import { Button, ButtonProps } from "./ui/button";
 import {
   Dialog,
   DialogContent,
@@ -13,15 +13,14 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 
-interface TagFormProps {
+interface TagFormProps extends Pick<ButtonProps, 'variant' | 'size' | 'asChild'> {
   className?: string;
-  variant? : "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined
 }
-const TagForm = ({ className, variant }: TagFormProps) => {
+const TagForm = ({ className, variant, size, asChild }: TagFormProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className={cn("", className)} variant={variant}>
+        <Button className={cn("", className)} variant={variant} size={size}>
           <span className="text-xl">+ &nbsp;</span> New Tag
         </Button>
       </DialogTrigger>

@@ -50,7 +50,7 @@ const TeamPerformance = () => {
       },
     ];
   return (
-    <Card className="grow ">
+    <Card>
       <CardHeader>
         <CardTitle>Team Performance</CardTitle>
         <CardDescription>

@@ -8,7 +8,7 @@ const TagList = () => {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Tags</CardTitle>
-        <TagForm variant={"outline"}/>
+        <TagForm variant={"outline"} size={"sm"}/>
       </CardHeader>
       <CardContent className="flex flex-wrap gap-1.5">
         {tags.map((tag) => (
