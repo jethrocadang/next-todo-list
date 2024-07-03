@@ -26,7 +26,7 @@ const TaskCard = ({
               <Badge key={index}>{tag}</Badge>
             ))}
           </div>
-          <div className="">
+          <div>
             <p className="font-bold">{title}</p>
             <p className="font-normal">
               {description}

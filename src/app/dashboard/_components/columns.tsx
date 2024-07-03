@@ -3,14 +3,8 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Task } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import TaskView from "@/components/task-view";
+
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -36,16 +30,7 @@ export const columns: ColumnDef<Task>[] = [
       const task = row.original;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant={"ghost"}>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem className="justify-center">View Task</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <TaskView/>
       );
     },
   },
