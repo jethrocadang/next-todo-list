@@ -12,3 +12,11 @@ export type Task = {
     id: string
     title: string
   }
+
+  export type User = {
+    id: string
+    firstName: string
+    lastName: string
+    email: string
+    team: string
+  }
