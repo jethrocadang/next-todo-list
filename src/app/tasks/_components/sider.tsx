@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const TaskSider = () => {
   return (
-    <aside className="h-full rounded-md py-2.5">
+    <aside className="h-full rounded-md py-2.5 hidden lg:block">
       <Card className="flex h-full flex-col px-8 pt-16">
         <div className="flex flex-col items-center mb-12 gap-3">
           <Avatar>
