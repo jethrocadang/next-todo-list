@@ -10,7 +10,7 @@ const StoreSider = () => {
   const {selectedDate, setSelectedDate} = useDateSelector();
 
   return (
-    <aside className="h-full rounded-md py-2.5">
+    <aside className="h-full rounded-md py-2.5 hidden">
       <Card className="flex h-full flex-col px-8 pt-16">
         <p className="mx-auto mb-3 tracking-wide font-semibold text-xl">Team</p>
         <div className="space-y-2.5">
