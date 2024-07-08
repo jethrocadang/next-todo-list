@@ -8,7 +8,24 @@ import { useDateSelector } from "@/hooks/useDateSelector";
 import DonutChart from "@/app/dashboard/_components/donut-chart";
 import clsx from "clsx";
 
-const StoreSider = () => {
+import { CalendarIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { format } from "date-fns";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerHeader,
+  DrawerDescription,
+  DrawerTitle,
+  DrawerFooter,
+} from "@/components/ui/drawer";
+import React from "react";
+
+const StoreSiderSm = () => {
+  const [open, setOpen] = React.useState(false);
   const { selectedDate, setSelectedDate } = useDateSelector();
 
   const dummyData = [
@@ -30,9 +47,11 @@ const StoreSider = () => {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#FF8042"];
 
   return (
-    <aside className="hidden h-full rounded-md py-2.5 lg:block">
-      <Card className="flex h-full flex-col px-10 pt-16">
-        <p className="mx-auto mb-3 text-xl font-semibold tracking-wide">Team</p>
+    <Card className="flex h-full flex-col px-10 pb-5 pt-16 lg:hidden">
+      <div className="flex w-full flex-col mb-2.5">
+        <p className="mx-auto mb-3 text-xl font-semibold tracking-wide">
+          Task Distribution
+        </p>
         <DonutChart data={data} colors={COLORS} />
         <div className="mt-5 flex justify-center -space-x-2">
           {dummyData.map((item, index) => (
@@ -50,17 +69,40 @@ const StoreSider = () => {
             </Avatar>
           ))}
         </div>
-        <Card className="mt-10">
+      </div>
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerTrigger asChild>
+          <Button
+            variant={"outline"}
+            className={cn(
+              "w-full items-center justify-between bg-card text-left font-normal",
+              !selectedDate && "text-muted-foreground",
+            )}
+          >
+            {selectedDate ? (
+              format(selectedDate, "PPP")
+            ) : (
+              <span>Pick a date</span>
+            )}
+            <CalendarIcon className="mr-2 h-4 w-4 opacity-50" />
+          </Button>
+        </DrawerTrigger>
+        <DrawerContent>
           <Calendar
             className="flex justify-center"
             selected={selectedDate}
             mode="single"
             onSelect={setSelectedDate}
           />
-        </Card>
-      </Card>
-    </aside>
+          <DrawerFooter className="pt-2">
+            <DrawerClose asChild>
+              <Button variant="outline">Okay</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </Card>
   );
 };
 
-export default StoreSider;
+export default StoreSiderSm;

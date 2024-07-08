@@ -17,23 +17,25 @@ const TaskCard = ({
 }: Task) => {
   return (
     <div className="flex items-center gap-3" key={id}>
-      <Checkbox />
-      <Card className="flex w-full items-center rounded-lg p-5">
+      <div className="hidden md:block">
+        <Checkbox />
+      </div>
+      <Card className="flex w-full flex-col items-center rounded-lg p-2.5 md:p-5 md:flex-row">
         <div className="w-full space-y-3">
           <div className="space-x-2">
-            <Badge variant={"outline"}>{priority}</Badge>
+            <Badge variant={"outline"} className="text-xs">{priority}</Badge>
             {tags.map((tag, index) => (
               <Badge key={index}>{tag}</Badge>
             ))}
           </div>
           <div>
-            <p className="font-bold">{title}</p>
-            <p className="font-normal">
-              {description}
-            </p>
+            <p className="font-bold text-sm md:text-md">{title}</p>
+            <p className="font-normal text-muted-foreground text-xs md:text-sm">{description}</p>
           </div>
         </div>
-        <RiMore2Fill />
+        <div className="hidden md:block"> 
+          <RiMore2Fill />
+        </div>
       </Card>
     </div>
   );

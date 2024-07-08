@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "./ui/dialog";
-import { Button } from "./ui/button";
+import { Button, ButtonProps } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -24,7 +24,12 @@ import { useDateSelector } from "@/hooks/useDateSelector";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 
-const TaskForm = () => {
+interface TaskFormProps
+  extends Pick<ButtonProps, "variant" | "size" | "asChild"> {
+  className?: string;
+}
+
+const TaskForm = ({ className, variant, size, asChild }: TaskFormProps) => {
   const { selectedDate, setSelectedDate } = useDateSelector();
   const [calendarOpen, setCalendarOpen] = useState(false);
 
@@ -36,11 +41,11 @@ const TaskForm = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>
+        <Button className={cn("", className)} variant={variant} size={size}>
           <span className="text-xl">+ &nbsp;</span> Add Task
         </Button>
       </DialogTrigger>
-      <DialogContent className="p-10 max-w-[1000px]">
+      <DialogContent className="max-w-[1000px] p-10">
         <DialogHeader className="select-none">
           <DialogTitle>Create New Task</DialogTitle>
           <DialogDescription>Add a new task for your Team.</DialogDescription>
@@ -61,10 +66,18 @@ const TaskForm = () => {
           <div>
             <Label>Priority</Label>
             <div className="space-x-2.5">
-              <Badge variant={"critical"} className="px-2.5 py-1.5 rounded-sm">Critical</Badge>
-              <Badge variant={"high"} className="px-2.5 py-1.5 rounded-sm">High</Badge>
-              <Badge variant={"medium"} className="px-2.5 py-1.5 rounded-sm">Medium</Badge>
-              <Badge variant={"low"} className="px-2.5 py-1.5 rounded-sm">Low</Badge>  
+              <Badge variant={"critical"} className="rounded-sm px-2.5 py-1.5">
+                Critical
+              </Badge>
+              <Badge variant={"high"} className="rounded-sm px-2.5 py-1.5">
+                High
+              </Badge>
+              <Badge variant={"medium"} className="rounded-sm px-2.5 py-1.5">
+                Medium
+              </Badge>
+              <Badge variant={"low"} className="rounded-sm px-2.5 py-1.5">
+                Low
+              </Badge>
             </div>
           </div>
           <div>
@@ -79,15 +92,15 @@ const TaskForm = () => {
                 !selectedDate && "text-muted-foreground",
               )}
             >
-              <CalendarIcon className="mr-2 h-4 w-4" />
               {selectedDate ? (
                 format(selectedDate, "PPP")
               ) : (
                 <span>Pick a date</span>
               )}
+              <CalendarIcon className="mr-2 h-4 w-4 opacity-50" />
             </Button>
             {calendarOpen && (
-              <Card className="w-fit z-50">
+              <Card className="z-50 w-fit">
                 <Calendar
                   selected={selectedDate}
                   onSelect={setSelectedDate}
@@ -105,7 +118,7 @@ const TaskForm = () => {
           </div>
           <div>
             <Label>Owner</Label>
-            <Input/>
+            <Input />
           </div>
           <Button className="w-full">Create Task</Button>
         </div>

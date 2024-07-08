@@ -17,26 +17,27 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const DonutChart = () => {
-  const data = [
-    { name: "Completed", value: 4 },
-    { name: "In Progress", value: 3 },
-    { name: "Done", value: 3 },
-    { name: "Blocked", value: 2 },
-  ];
+type DonutChartProps = {
+  data: { name: string; value: number }[];
+  colors: string[];
+  title?: string;
+  description?: string;
+};
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
+const DonutChart = ({ data, colors, title, description }: DonutChartProps) => {
   const handleClick = (event: MouseEvent<SVGElement>) => {
     event.preventDefault();
   };
+
   return (
     <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Task Status</CardTitle>
-        <CardDescription>Status Comparison</CardDescription>
-      </CardHeader>
-      <CardContent className="h-[300px]">
+      {(title || description) && (
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>{description}</CardDescription>
+        </CardHeader>
+      )}
+      <CardContent className="h-[300px] p-5">
         <ResponsiveContainer width={"100%"} height={"100%"}>
           <PieChart>
             <Pie
@@ -54,12 +55,11 @@ const DonutChart = () => {
               {data.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
+                  fill={colors[index % colors.length]}
                 />
               ))}
             </Pie>
             <Tooltip contentStyle={{ borderRadius: "10px" }} />
-            <Legend/>
           </PieChart>
         </ResponsiveContainer>
       </CardContent>

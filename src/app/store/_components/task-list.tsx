@@ -13,40 +13,54 @@ import TaskForm from "@/components/task-form";
 import TagForm from "@/components/tag-form";
 
 const TaskList = () => {
-  const {selectedDate, nextDay, previousDay} = useDateSelector();
+  const { selectedDate, nextDay, previousDay } = useDateSelector();
 
-  const filteredTasks = tasks.filter((task) => isSameDay(new Date(task.date), selectedDate));
+  const filteredTasks = tasks.filter((task) =>
+    isSameDay(new Date(task.date), selectedDate),
+  );
 
   const formatDay = format(selectedDate, "EEEE");
   const formatDate = format(selectedDate, "dd MMMM yyyy");
 
-
   return (
-      <Card className="flex flex-col p-6">
-        <div className="flex w-full items-center justify-between">
-          <div className="flex w-1/5 items-center justify-between">
-            <div className="space-y-2">
+    <Card className="flex flex-col p-6">
+      <div className="flex w-full flex-col items-center justify-between md:flex-row gap-2.5">
+        <div className="flex w-full flex-col items-center justify-between md:w-1/5 md:flex-row">
+          <div className="flex w-full items-center justify-between">
+            <button onClick={previousDay} className="md:hidden">
+              <MdOutlineArrowCircleLeft  size={30}/>
+            </button>
+            <div className="leading-0 flex flex-col justify-center md:space-y-2">
               <p className="text-lg font-bold">{formatDay}</p>
-              <p className="text-sm">{formatDate}</p>
+              <p className="text-xs text-muted-foreground">{formatDate}</p>
             </div>
-            <div className="flex pr-7 text-2xl">
-              <button onClick={previousDay}>
-                <MdOutlineArrowCircleLeft />
-              </button>
-              <button onClick={nextDay}>
-                <MdOutlineArrowCircleRight />
-              </button>
-            </div>
+            <button onClick={nextDay} className="md:hidden">
+              <MdOutlineArrowCircleRight size={30} />
+            </button>
           </div>
-          {/**Add Task Button */}
-          <TaskForm/>
+          <div className="hidden pr-7 text-2xl md:flex">
+            <button onClick={previousDay}>
+              <MdOutlineArrowCircleLeft />
+            </button>
+            <button onClick={nextDay}>
+              <MdOutlineArrowCircleRight />
+            </button>
+          </div>
         </div>
-        <div className="space-y-2.5 px-5 py-10">
-          {filteredTasks.map((task) => (
-            <TaskCard key={task.id} {...task} />
-          ))}
-        </div>
-      </Card>
+        {/**Add Task Button */}
+        <TaskForm
+          className="w-full md:hidden"
+          variant={"outline"}
+          size={"sm"}
+        />
+        <TaskForm className="hidden md:inline-flex" />
+      </div>
+      <div className="space-y-2.5 md:px-5 py-10">
+        {filteredTasks.map((task) => (
+          <TaskCard key={task.id} {...task} />
+        ))}
+      </div>
+    </Card>
   );
 };
 

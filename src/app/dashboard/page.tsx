@@ -9,6 +9,15 @@ import { TaskTable } from "./_components/task-table";
 import { columns } from "./_components/columns";
 import tasks from "../store/_components/dummy";
 
+const data = [
+  { name: "Completed", value: 4 },
+  { name: "In Progress", value: 3 },
+  { name: "Done", value: 3 },
+  { name: "Blocked", value: 2 },
+];
+
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
 const HomePage = () => {
   return (
     <div className="flex w-full p-2.5">
@@ -23,7 +32,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2.5 lg:flex-row">
-            <DonutChart />
+            <DonutChart data={data} colors={COLORS} title="Task Status" description="Current status oa all Tasks"/>
             <TaskTable columns={columns} data={tasks} />
           </div>
         </div>
@@ -33,3 +42,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+ 
