@@ -10,7 +10,6 @@ import { format, isSameDay } from "date-fns";
 import { useDateSelector } from "@/hooks/useDateSelector";
 import tasks from "./dummy";
 import TaskForm from "@/components/task-form";
-import TagForm from "@/components/tag-form";
 
 const TaskList = () => {
   const { selectedDate, nextDay, previousDay } = useDateSelector();
@@ -30,9 +29,9 @@ const TaskList = () => {
             <button onClick={previousDay} className="md:hidden">
               <MdOutlineArrowCircleLeft  size={30}/>
             </button>
-            <div className="leading-0 flex flex-col justify-center md:space-y-2">
+            <div className="leading-0 flex flex-col justify-center md:space-y-2 md:mr-5">
               <p className="text-lg font-bold">{formatDay}</p>
-              <p className="text-xs text-muted-foreground">{formatDate}</p>
+              <p className="text-xs text-muted-foreground text-nowrap">{formatDate}</p>
             </div>
             <button onClick={nextDay} className="md:hidden">
               <MdOutlineArrowCircleRight size={30} />

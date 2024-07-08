@@ -16,7 +16,6 @@ import tags from "@/app/store/_components/tags-dummy";
 import MultipleSelector, { Option } from "./ui/multi-selector";
 import { Calendar } from "./ui/calendar";
 import { format } from "date-fns";
-import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { CalendarIcon } from "lucide-react";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
