@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import React, { MouseEvent } from "react";
 import {
   PieChart,
@@ -22,15 +23,22 @@ type DonutChartProps = {
   colors: string[];
   title?: string;
   description?: string;
+  className?: string;
 };
 
-const DonutChart = ({ data, colors, title, description }: DonutChartProps) => {
+const DonutChart = ({
+  data,
+  colors,
+  title,
+  description,
+  className,
+}: DonutChartProps) => {
   const handleClick = (event: MouseEvent<SVGElement>) => {
     event.preventDefault();
   };
 
   return (
-    <Card className="w-full">
+    <Card className={cn("w-full", className)}>
       {(title || description) && (
         <CardHeader>
           <CardTitle>{title}</CardTitle>

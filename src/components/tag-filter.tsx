@@ -27,7 +27,9 @@ const TagsFilter = () => {
         </div>
         <ScrollBar orientation="horizontal" className="hidden" />
       </ScrollArea>
-      <div className="hidden flex-row gap-2.5 lg:flex">
+
+
+      <div className="hidden flex-row gap-2.5 lg:flex flex-wrap">
         <Badge>Design</Badge>
         <Badge>Code</Badge>
         <Badge>Design</Badge>

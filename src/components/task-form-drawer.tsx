@@ -1,37 +1,38 @@
 "use client";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTrigger,
-  DialogTitle,
-  DialogDescription,
-} from "./ui/dialog";
-import { Button, ButtonProps } from "./ui/button";
+import React, { useState } from "react";
+//UI
+import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import tags from "@/app/store/_components/tags-dummy";
 import MultipleSelector, { Option } from "./ui/multi-selector";
+import { Badge } from "./ui/badge";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "./ui/drawer";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popoverDialog";
+//Calendar
 import { Calendar } from "./ui/calendar";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import React, { useState } from "react";
+//Hooks & Utils
 import { cn } from "@/lib/utils";
 import { useDateSelector } from "@/hooks/useDateSelector";
-import { Card } from "./ui/card";
-import { Badge } from "./ui/badge";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popoverDialog";
+import { useMediaQuery } from "react-responsive";
+//Icons
+import { CalendarIcon } from "lucide-react";
+//Data
+import tags from "@/app/store/_components/tags-dummy";
 
-interface TaskFormProps
-  extends Pick<ButtonProps, "variant" | "size" | "asChild"> {
-  className?: string;
-}
-
-const TaskForm = ({ className, variant, size, asChild }: TaskFormProps) => {
+//UI for sm devices
+const TaskFormDrawer = () => {
   const { selectedDate, setSelectedDate } = useDateSelector();
-  const [calendarOpen, setCalendarOpen] = useState(false);
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const OPTIONS: Option[] = tags.map((tag) => ({
     value: tag.title,
@@ -39,18 +40,24 @@ const TaskForm = ({ className, variant, size, asChild }: TaskFormProps) => {
   }));
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button className={cn("", className)} variant={variant} size={size}>
-          <span className="text-xl">+ &nbsp;</span> Add Task
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="max-w-[1000px] p-10">
-        <DialogHeader className="select-none">
-          <DialogTitle>Create New Task</DialogTitle>
-          <DialogDescription>Add a new task for your Team.</DialogDescription>
-        </DialogHeader>
-        <div className="space-y-5">
+    <Drawer>
+      <DrawerTrigger asChild>
+        {isMobile ? (
+          <Button className={"w-full"} variant={"outline"} size={"sm"}>
+            <span className="text-xl">+ &nbsp;</span> Add Task
+          </Button>
+        ) : (
+          <Button>
+            <span className="text-xl">+ &nbsp;</span> Add Task
+          </Button>
+        )}
+      </DrawerTrigger>
+      <DrawerContent className="px-7 pb-3">
+        <DrawerHeader className="select-none">
+          <DrawerTitle>Create New Task</DrawerTitle>
+          <DrawerDescription>Add a new task for your Team.</DrawerDescription>
+        </DrawerHeader>
+        <div className="space-y-2.5">
           <div>
             <Label>Title</Label>
             <Input />
@@ -114,9 +121,9 @@ const TaskForm = ({ className, variant, size, asChild }: TaskFormProps) => {
           </div>
           <Button className="w-full">Create Task</Button>
         </div>
-      </DialogContent>
-    </Dialog>
+      </DrawerContent>
+    </Drawer>
   );
 };
 
-export default TaskForm;
+export default TaskFormDrawer;

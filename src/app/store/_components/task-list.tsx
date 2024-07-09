@@ -10,9 +10,12 @@ import { format, isSameDay } from "date-fns";
 import { useDateSelector } from "@/hooks/useDateSelector";
 import tasks from "./dummy";
 import TaskForm from "@/components/task-form";
+import TaskFormDrawer from "@/components/task-form-drawer";
+import { useMediaQuery } from "react-responsive";
 
 const TaskList = () => {
   const { selectedDate, nextDay, previousDay } = useDateSelector();
+  const isMobile = useMediaQuery({ query: "(max-width: 912px)" });
 
   const filteredTasks = tasks.filter((task) =>
     isSameDay(new Date(task.date), selectedDate),
@@ -23,15 +26,17 @@ const TaskList = () => {
 
   return (
     <Card className="flex flex-col p-6">
-      <div className="flex w-full flex-col items-center justify-between md:flex-row gap-2.5">
+      <div className="flex w-full flex-col items-center justify-between gap-2.5 md:flex-row">
         <div className="flex w-full flex-col items-center justify-between md:w-1/5 md:flex-row">
           <div className="flex w-full items-center justify-between">
             <button onClick={previousDay} className="md:hidden">
-              <MdOutlineArrowCircleLeft  size={30}/>
+              <MdOutlineArrowCircleLeft size={30} />
             </button>
-            <div className="leading-0 flex flex-col justify-center md:space-y-2 md:mr-5">
+            <div className="leading-0 flex flex-col justify-center md:mr-5 md:space-y-2">
               <p className="text-lg font-bold">{formatDay}</p>
-              <p className="text-xs text-muted-foreground text-nowrap">{formatDate}</p>
+              <p className="text-nowrap text-xs text-muted-foreground">
+                {formatDate}
+              </p>
             </div>
             <button onClick={nextDay} className="md:hidden">
               <MdOutlineArrowCircleRight size={30} />
@@ -47,14 +52,13 @@ const TaskList = () => {
           </div>
         </div>
         {/**Add Task Button */}
-        <TaskForm
-          className="w-full md:hidden"
-          variant={"outline"}
-          size={"sm"}
-        />
-        <TaskForm className="hidden md:inline-flex" />
+        {isMobile ? (
+          <TaskFormDrawer />
+        ) : (
+          <TaskForm className="hidden md:inline-flex" />
+        )}
       </div>
-      <div className="space-y-2.5 md:px-5 py-10">
+      <div className="space-y-2.5 py-10 md:px-5">
         {filteredTasks.map((task) => (
           <TaskCard key={task.id} {...task} />
         ))}
